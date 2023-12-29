@@ -1,4 +1,17 @@
-import { Card, CardBody, CardPoster, CardTitle, Tag } from './BlogCard.styled';
+import { formateDateToNow } from 'helpers/formateDate';
+import {
+  Avatar,
+  Card,
+  CardBody,
+  CardFooter,
+  CardPoster,
+  CardText,
+  CardTitle,
+  Date,
+  Tag,
+  UserBox,
+  UserName,
+} from './BlogCard.styled';
 
 export const BlogCard = ({
   name,
@@ -15,12 +28,17 @@ export const BlogCard = ({
       <CardBody>
         <Tag>{tag}</Tag>
         <CardTitle>{title}</CardTitle>
-        <p>{description}</p>
+        <CardText>{description}</CardText>
       </CardBody>
-
-      <img src={avatar} alt={name} />
-      <p>{name}</p>
-      <p>{postedAt}</p>
+      <CardFooter>
+        <UserBox>
+          <Avatar src={avatar} alt={name} />
+          <div>
+            <UserName>{name}</UserName>
+            <Date>{formateDateToNow(postedAt)}</Date>
+          </div>
+        </UserBox>
+      </CardFooter>
     </Card>
   );
 };
