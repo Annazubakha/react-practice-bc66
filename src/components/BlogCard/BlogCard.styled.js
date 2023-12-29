@@ -34,3 +34,32 @@ export const CardTitle = styled.h2`
   font-size: ${({ theme }) => theme.spacing(6)};
   text-transform: capitalize;
 `;
+
+export const CardText = styled.p`
+  font-weight: 200;
+  letter-spacing: 0.8px;
+`;
+
+export const CardFooter = styled.div`
+  display: flex;
+  padding: ${({ theme }) => theme.spacing(4)};
+  margin-top: auto;
+`;
+
+export const UserBox = styled.div`
+  display: flex;
+  gap: ${({ theme }) => theme.spacing(2)};
+`;
+
+export const Avatar = styled.img`
+  border-radius: 50%;
+`;
+
+export const UserName = styled.h3`
+  font-size: 14px;
+  margin-bottom: ${({ theme }) => theme.spacing(1)};
+`;
+
+export const Date = styled.span`
+  color: ${({ theme }) => theme.colors.gray};
+`;
