@@ -1,3 +1,5 @@
+import { Card, CardBody, CardPoster, CardTitle, Tag } from './BlogCard.styled';
+
 export const BlogCard = ({
   name,
   description,
@@ -8,14 +10,17 @@ export const BlogCard = ({
   postedAt,
 }) => {
   return (
-    <div>
-      <img src={poster} alt={tag} />
-      <h2>{tag}</h2>
-      <h3>{title}</h3>
-      <p>{description}</p>
+    <Card>
+      <CardPoster src={poster} alt={tag} />
+      <CardBody>
+        <Tag>{tag}</Tag>
+        <CardTitle>{title}</CardTitle>
+        <p>{description}</p>
+      </CardBody>
+
       <img src={avatar} alt={name} />
       <p>{name}</p>
       <p>{postedAt}</p>
-    </div>
+    </Card>
   );
 };
