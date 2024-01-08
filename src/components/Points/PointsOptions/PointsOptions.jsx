@@ -1,11 +1,15 @@
-export const PointsOptions = ({ options }) => {
+import { List } from './PointsOptions.styled';
+
+export const PointsOptions = ({ options, onLeavePoint }) => {
   return (
-    <ul>
+    <List>
       {options.map(item => (
         <li key={item}>
-          <button type="button">{item}</button>
+          <button type="button" onClick={() => onLeavePoint(item)}>
+            {item}
+          </button>
         </li>
       ))}
-    </ul>
+    </List>
   );
 };
