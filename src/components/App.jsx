@@ -1,14 +1,24 @@
-import { BlogCard, Container, Section, Statistics } from 'components'
-import article from 'data/article.json';
-import statistics from 'data/statistics.json';
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+import 'react-tabs/style/react-tabs.css';
+
+import { Points, Props } from 'tabs';
 
 export const App = () => {
   return (
     <>
-      <Section>
-       <Container><BlogCard {...article} /></Container> 
-      </Section>
-      <Statistics statistics={statistics} title="Statistics" />
+      <Tabs>
+        <TabList>
+          <Tab>Points</Tab>
+          <Tab>props</Tab>
+        </TabList>
+
+        <TabPanel>
+          <Points />
+        </TabPanel>
+        <TabPanel>
+          <Props />
+        </TabPanel>
+      </Tabs>
     </>
   );
 };

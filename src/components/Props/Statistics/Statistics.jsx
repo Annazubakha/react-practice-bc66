@@ -1,4 +1,4 @@
-import { StatisticsItem } from 'components/StatisticsItem/StatisticsItem';
+import { StatisticsItem } from 'components/Props/StatisticsItem/StatisticsItem';
 
 export const Statistics = ({ statistics, title }) => {
   return (
