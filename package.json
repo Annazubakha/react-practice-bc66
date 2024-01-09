@@ -9,6 +9,7 @@
     "@testing-library/user-event": "^13.5.0",
     "date-fns": "^3.0.6",
     "modern-normalize": "^2.0.0",
+    "nanoid": "^5.0.4",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
     "react-scripts": "5.0.1",
