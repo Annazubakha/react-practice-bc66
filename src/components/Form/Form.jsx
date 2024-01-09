@@ -7,7 +7,9 @@ export class Form extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
+
     this.props.addTodo(this.state.query);
+
     this.setState({ query: '' });
   };
 
