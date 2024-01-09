@@ -22,7 +22,7 @@ export class Form extends Component {
     const { query } = this.state;
 
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form onSubmit={this.handleSubmit} style={{ marginBottom: '20px' }}>
         <label>
           <input
             value={query}
