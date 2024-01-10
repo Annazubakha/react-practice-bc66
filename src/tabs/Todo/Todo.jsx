@@ -3,6 +3,7 @@ import { TodoList } from 'components/Todo/TodoList';
 import React, { Component } from 'react';
 import { nanoid } from 'nanoid';
 import { TodoFilter } from 'components/Todo/TodoFilter';
+import { loadFromLS, saveToLS } from 'helpers';
 
 export class Todo extends Component {
   state = {
@@ -12,6 +13,21 @@ export class Todo extends Component {
     ],
     filter: '',
   };
+
+  componentDidMount() {
+    const savedTodoes = loadFromLS('todoes');
+    if (savedTodoes) {
+      this.setState({ todo: savedTodoes });
+    }
+  }
+
+  componentDidUpdate(_, prevState) {
+    const { todo } = this.state;
+
+    if (prevState.todo !== todo) {
+      saveToLS('todoes', todo);
+    }
+  }
 
   addTodo = text => {
     const { todo } = this.state;
