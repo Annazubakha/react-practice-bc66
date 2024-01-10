@@ -69,7 +69,7 @@ export class Todo extends Component {
 
     return (
       <div>
-        <Form addTodo={this.addTodo} />
+        <Form addTodo={this.addTodo} text="Add todos" />
         <TodoFilter value={filter} onChange={this.filterChange} />
         <TodoList todo={filteredTodos} onDelete={this.deleteTodo} />
       </div>
