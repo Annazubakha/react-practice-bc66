@@ -20,6 +20,7 @@ export class Form extends Component {
 
   render() {
     const { query } = this.state;
+    const { text } = this.props;
 
     return (
       <form onSubmit={this.handleSubmit} style={{ marginBottom: '20px' }}>
@@ -29,9 +30,10 @@ export class Form extends Component {
             type="text"
             name="query"
             onChange={this.handleChange}
+            required
           />
         </label>
-        <button>Add Todo</button>
+        <button>{text}</button>
       </form>
     );
   }
