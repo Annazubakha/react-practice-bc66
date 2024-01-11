@@ -1,6 +1,6 @@
-export const ImageGalleryItem = ({ alt, small }) => {
+export const ImageGalleryItem = ({ alt, small, full, openModal }) => {
   return (
-    <li style={{ flexBasis: '20%' }}>
+    <li onClick={() => openModal(full)} style={{ flexBasis: '20%' }}>
       <img src={small} alt={alt} />
     </li>
   );

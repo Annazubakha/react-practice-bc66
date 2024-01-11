@@ -1,6 +1,6 @@
 import { ImageGalleryItem } from './ImageGalleryItem';
 
-export const ImageGalleryList = ({ photos }) => {
+export const ImageGalleryList = ({ photos, openModal }) => {
   return (
     <ul
       style={{
@@ -11,7 +11,13 @@ export const ImageGalleryList = ({ photos }) => {
       }}
     >
       {photos.map(({ id, urls, alt_description }) => (
-        <ImageGalleryItem key={id} small={urls.small} alt={alt_description} />
+        <ImageGalleryItem
+          openModal={openModal}
+          key={id}
+          small={urls.small}
+          alt={alt_description}
+          full={urls.full}
+        />
       ))}
     </ul>
   );
