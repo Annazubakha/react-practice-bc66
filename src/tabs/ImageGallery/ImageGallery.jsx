@@ -48,7 +48,7 @@ export class ImageGallery extends Component {
     }));
   };
 
-  handleClickImg = url => {
+  handleClickImg = (url = '') => {
     this.setState({ largeImgUrl: url });
   };
 
@@ -70,7 +70,9 @@ export class ImageGallery extends Component {
             {isEmpty && <p>No photos for your query!</p>}
             {error && <p>Sorry, something went wrong {error}</p>}
             {largeImgUrl && (
-              <Modal url={largeImgUrl} closeModal={this.handleClickImg} />
+              <Modal closeModal={this.handleClickImg}>
+                <img src={largeImgUrl} alt="" width="70%" />
+              </Modal>
             )}
           </Container>
         </Section>

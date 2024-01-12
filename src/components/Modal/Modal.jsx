@@ -10,17 +10,17 @@ export default class Modal extends Component {
   }
   handleBackdropClick = event => {
     if (event.target === event.currentTarget) {
-      this.props.closeModal('');
+      this.props.closeModal();
     }
   };
 
   handleEscPress = event => {
-    if (event.code === 'Escape') this.props.closeModal('');
+    if (event.code === 'Escape') this.props.closeModal();
   };
   render() {
     return (
       <Backdrop onClick={this.handleBackdropClick}>
-        <img src={this.props.url} alt="" width="70%" />
+        {this.props.children}
       </Backdrop>
     );
   }
