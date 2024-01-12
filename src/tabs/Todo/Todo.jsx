@@ -14,6 +14,7 @@ export class Todo extends Component {
     ],
     filter: '',
     isEdit: false,
+    currentTodo: {},
   };
 
   componentDidMount() {
@@ -65,18 +66,36 @@ export class Todo extends Component {
     );
   };
 
-  onEdit = () => {
-    this.setState(prevState => ({ isEdit: !prevState.isEdit }));
+  onEdit = currentTodo => {
+    console.log(currentTodo);
+    this.setState(prevState => ({ isEdit: !prevState.isEdit, currentTodo }));
+  };
+
+  updateTodo = text => {
+    console.log(text);
+    const { currentTodo } = this.state;
+    this.setState(prevState => ({
+      todo: prevState.todo.map(item => {
+        if (item.id === currentTodo.id) {
+          return { ...currentTodo, text };
+        }
+        return item;
+      }),
+      isEdit: false,
+    }));
   };
 
   render() {
-    const { filter, isEdit } = this.state;
+    const { filter, isEdit, currentTodo } = this.state;
     const filteredTodos = this.getFilteredTodos();
 
     return (
       <div>
         {isEdit ? (
-          <EditForm />
+          <EditForm
+            updateTodo={this.updateTodo}
+            defaultValue={currentTodo.text}
+          />
         ) : (
           <Form addTodo={this.addTodo} text="Add todos" />
         )}
