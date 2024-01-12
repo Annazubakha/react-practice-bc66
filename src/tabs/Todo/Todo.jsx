@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 import { nanoid } from 'nanoid';
 import { TodoFilter } from 'components/Todo/TodoFilter';
 import { loadFromLS, saveToLS } from 'helpers';
+import { EditForm } from 'components';
 
 export class Todo extends Component {
   state = {
@@ -12,6 +13,7 @@ export class Todo extends Component {
       { text: 'todo2', id: 2 },
     ],
     filter: '',
+    isEdit: false,
   };
 
   componentDidMount() {
@@ -63,15 +65,29 @@ export class Todo extends Component {
     );
   };
 
+  onEdit = () => {
+    this.setState(prevState => ({ isEdit: !prevState.isEdit }));
+  };
+
   render() {
-    const { filter } = this.state;
+    const { filter, isEdit } = this.state;
     const filteredTodos = this.getFilteredTodos();
 
     return (
       <div>
-        <Form addTodo={this.addTodo} text="Add todos" />
+        {isEdit ? (
+          <EditForm />
+        ) : (
+          <Form addTodo={this.addTodo} text="Add todos" />
+        )}
+
         <TodoFilter value={filter} onChange={this.filterChange} />
-        <TodoList todo={filteredTodos} onDelete={this.deleteTodo} />
+        <TodoList
+          todo={filteredTodos}
+          onDelete={this.deleteTodo}
+          onEdit={this.onEdit}
+          disabled={isEdit}
+        />
       </div>
     );
   }
