@@ -36,7 +36,7 @@ export const TodoList = ({ todo, onDelete, onEdit, disabled }) => {
               bottom: 0,
             }}
             disabled={disabled}
-            onClick={() => onEdit()}
+            onClick={() => onEdit(item)}
           >
             <RiEdit2Line size={16} color={disabled ? 'grey' : 'lightblue'} />
           </button>
