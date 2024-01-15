@@ -1,72 +1,53 @@
 import { Form } from 'components/Form/Form';
 import { TodoList } from 'components/Todo/TodoList';
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import { nanoid } from 'nanoid';
 import { TodoFilter } from 'components/Todo/TodoFilter';
-import { loadFromLS, saveToLS } from 'helpers';
-import { Container, EditForm, Section } from 'components';
-import Modal from 'components/Modal/Modal';
+import { Container, Section } from 'components';
+import { useLocalStorage } from 'hooks/useLocalStorage';
 
-export class Todo extends Component {
-  state = {
-    todo: [
-      { text: 'todo1', id: 1 },
-      { text: 'todo2', id: 2 },
-    ],
-    filter: '',
-    isEdit: false,
-    currentTodo: {},
+export const Todo = () => {
+  // state = {
+  //   todo: [
+  //     { text: 'todo1', id: 1 },
+  //     { text: 'todo2', id: 2 },
+  //   ],
+  //   filter: '',
+  //   isEdit: false,
+  //   currentTodo: {},
+  // };
+
+  const [todos, setTodos] = useLocalStorage('todoes', []);
+
+  const [filter, setFilter] = useState('');
+
+  const addTodo = text => {
+    if (findTodo(text)) return;
+
+    setTodos(prev => [...prev, { text, id: nanoid() }]);
   };
 
-  componentDidMount() {
-    const savedTodoes = loadFromLS('todoes');
-    if (savedTodoes) {
-      this.setState({ todo: savedTodoes });
-    }
-  }
-
-  componentDidUpdate(_, prevState) {
-    const { todo } = this.state;
-
-    if (prevState.todo !== todo) {
-      saveToLS('todoes', todo);
-    }
-  }
-
-  addTodo = text => {
-    if (this.findTodo(text)) return;
-
-    this.setState(prevState => ({
-      todo: [...prevState.todo, { text, id: nanoid() }],
-    }));
+  const deleteTodo = id => {
+    setTodos(prev => prev.filter(item => item.id !== id));
   };
 
-  deleteTodo = id => {
-    this.setState(prevState => ({
-      todo: prevState.todo.filter(item => item.id !== id),
-    }));
+  const filterChange = ({ target }) => {
+    setFilter(target.value);
   };
 
-  filterChange = ({ target }) => {
-    this.setState({ filter: target.value });
-  };
-
-  getFilteredTodos = () => {
-    const { todo, filter } = this.state;
-
-    return todo.filter(item =>
+  const getFilteredTodos = () => {
+    return todos.filter(item =>
       item.text.toLowerCase().includes(filter.toLowerCase())
     );
   };
 
-  onEdit = (currentTodo = {}) => {
-    console.log(currentTodo);
-    this.setState(prevState => ({ isEdit: !prevState.isEdit, currentTodo }));
-  };
+  // onEdit = (currentTodo = {}) => {
+  //   console.log(currentTodo);
+  //   this.setState(prevState => ({ isEdit: !prevState.isEdit, currentTodo }));
+  // };
 
-  findTodo = text => {
-    const { todo } = this.state;
-    const isExist = todo.find(
+  const findTodo = text => {
+    const isExist = todos.find(
       item => item.text.toLowerCase() === text.toLowerCase()
     );
 
@@ -77,48 +58,45 @@ export class Todo extends Component {
     return isExist;
   };
 
-  updateTodo = text => {
-    const { currentTodo } = this.state;
+  // updateTodo = text => {
+  //   const { currentTodo } = this.state;
 
-    if (this.findTodo(text)) return;
+  //   if (this.findTodo(text)) return;
 
-    this.setState(prevState => ({
-      todo: prevState.todo.map(item => {
-        if (item.id === currentTodo.id) {
-          return { ...currentTodo, text };
-        }
-        return item;
-      }),
-      isEdit: false,
-    }));
-  };
+  //   this.setState(prevState => ({
+  //     todo: prevState.todo.map(item => {
+  //       if (item.id === currentTodo.id) {
+  //         return { ...currentTodo, text };
+  //       }
+  //       return item;
+  //     }),
+  //     isEdit: false,
+  //   }));
+  // };
 
-  render() {
-    const { filter, isEdit, currentTodo } = this.state;
-    const filteredTodos = this.getFilteredTodos();
+  const filteredTodos = getFilteredTodos();
 
-    return (
-      <Section>
-        <Container>
-          <Form addTodo={this.addTodo} text="Add todos" />
-          <TodoFilter value={filter} onChange={this.filterChange} />
-          <TodoList
-            todo={filteredTodos}
-            onDelete={this.deleteTodo}
-            onEdit={this.onEdit}
-            disabled={isEdit}
-          />
-          {isEdit && (
-            <Modal closeModal={this.onEdit}>
-              <EditForm
-                cancelEdit={this.onEdit}
-                updateTodo={this.updateTodo}
-                defaultValue={currentTodo.text}
-              />
-            </Modal>
-          )}
-        </Container>
-      </Section>
-    );
-  }
-}
+  return (
+    <Section>
+      <Container>
+        <Form addTodo={addTodo} text="Add todos" />
+        <TodoFilter value={filter} onChange={filterChange} />
+        <TodoList
+          todo={filteredTodos}
+          onDelete={deleteTodo}
+          // onEdit={onEdit}
+          // disabled={isEdit}
+        />
+        {/* {isEdit && (
+          <Modal closeModal={this.onEdit}>
+            <EditForm
+              cancelEdit={this.onEdit}
+              updateTodo={this.updateTodo}
+              defaultValue={currentTodo.text}
+            />
+          </Modal>
+        )} */}
+      </Container>
+    </Section>
+  );
+};
