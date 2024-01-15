@@ -1,40 +1,33 @@
-import React, { Component } from 'react';
+import { useState } from 'react';
 
-export class Form extends Component {
-  state = {
-    query: '',
-  };
+export const Form = ({ addTodo, text }) => {
+  const [query, setQuery] = useState('');
 
-  handleSubmit = e => {
+  const handleSubmit = e => {
     e.preventDefault();
 
-    this.props.addTodo(this.state.query);
+    addTodo(query);
 
-    this.setState({ query: '' });
+    setQuery('');
   };
 
-  handleChange = e => {
-    const { name, value } = e.target;
-    this.setState({ [name]: value });
+  const handleChange = e => {
+    const { value } = e.target;
+    setQuery(value);
   };
 
-  render() {
-    const { query } = this.state;
-    const { text } = this.props;
-
-    return (
-      <form onSubmit={this.handleSubmit} style={{ marginBottom: '20px' }}>
-        <label>
-          <input
-            value={query}
-            type="text"
-            name="query"
-            onChange={this.handleChange}
-            required
-          />
-        </label>
-        <button>{text}</button>
-      </form>
-    );
-  }
-}
+  return (
+    <form onSubmit={handleSubmit} style={{ marginBottom: '20px' }}>
+      <label>
+        <input
+          value={query}
+          type="text"
+          name="query"
+          onChange={handleChange}
+          required
+        />
+      </label>
+      <button>{text}</button>
+    </form>
+  );
+};
