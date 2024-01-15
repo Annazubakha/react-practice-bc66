@@ -1,6 +1,6 @@
-import { RiDeleteBinLine, RiEdit2Line } from 'react-icons/ri';
+import { RiDeleteBinLine } from 'react-icons/ri';
 
-export const TodoList = ({ todo, onDelete, onEdit, disabled }) => {
+export const TodoList = ({ todo, onDelete, disabled = false }) => {
   return (
     <ul style={{ display: 'flex', gap: '8px' }}>
       {todo.map(item => (
@@ -24,11 +24,11 @@ export const TodoList = ({ todo, onDelete, onEdit, disabled }) => {
             }}
             type="button"
             onClick={() => onDelete(item.id)}
-            disabled={disabled}
+            // disabled={disabled}
           >
             <RiDeleteBinLine size={16} color={disabled ? 'grey' : 'red'} />
           </button>
-          <button
+          {/* <button
             type="button"
             style={{
               position: 'absolute',
@@ -39,7 +39,7 @@ export const TodoList = ({ todo, onDelete, onEdit, disabled }) => {
             onClick={() => onEdit(item)}
           >
             <RiEdit2Line size={16} color={disabled ? 'grey' : 'lightblue'} />
-          </button>
+          </button> */}
         </li>
       ))}
     </ul>
