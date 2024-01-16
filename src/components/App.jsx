@@ -8,19 +8,20 @@ export const App = () => {
     <>
       <Tabs>
         <TabList>
-          <Tab>ImageGallery</Tab>
           <Tab>Todo</Tab>
+          <Tab>ImageGallery</Tab>
           <Tab>Points</Tab>
           <Tab>props</Tab>
         </TabList>
 
         <TabPanel>
-          <ImageGallery />
+          <Todo />
         </TabPanel>
 
         <TabPanel>
-          <Todo />
+          <ImageGallery />
         </TabPanel>
+
         <TabPanel>
           <Points />
         </TabPanel>

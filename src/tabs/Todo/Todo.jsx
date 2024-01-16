@@ -3,23 +3,15 @@ import { TodoList } from 'components/Todo/TodoList';
 import React, { useState } from 'react';
 import { nanoid } from 'nanoid';
 import { TodoFilter } from 'components/Todo/TodoFilter';
-import { Container, Section } from 'components';
+import { Container, EditForm, Section } from 'components';
 import { useLocalStorage } from 'hooks/useLocalStorage';
+import { Modal } from 'components/Modal/Modal';
 
 export const Todo = () => {
-  // state = {
-  //   todo: [
-  //     { text: 'todo1', id: 1 },
-  //     { text: 'todo2', id: 2 },
-  //   ],
-  //   filter: '',
-  //   isEdit: false,
-  //   currentTodo: {},
-  // };
-
   const [todos, setTodos] = useLocalStorage('todoes', []);
-
   const [filter, setFilter] = useState('');
+  const [isEdit, setIsEdit] = useState(false);
+  const [currentTodo, setCurrentTodo] = useState({});
 
   const addTodo = text => {
     if (findTodo(text)) return;
@@ -41,10 +33,10 @@ export const Todo = () => {
     );
   };
 
-  // onEdit = (currentTodo = {}) => {
-  //   console.log(currentTodo);
-  //   this.setState(prevState => ({ isEdit: !prevState.isEdit, currentTodo }));
-  // };
+  const onEdit = (currentTodo = {}) => {
+    setIsEdit(!isEdit);
+    setCurrentTodo(currentTodo);
+  };
 
   const findTodo = text => {
     const isExist = todos.find(
@@ -58,21 +50,19 @@ export const Todo = () => {
     return isExist;
   };
 
-  // updateTodo = text => {
-  //   const { currentTodo } = this.state;
-
-  //   if (this.findTodo(text)) return;
-
-  //   this.setState(prevState => ({
-  //     todo: prevState.todo.map(item => {
-  //       if (item.id === currentTodo.id) {
-  //         return { ...currentTodo, text };
-  //       }
-  //       return item;
-  //     }),
-  //     isEdit: false,
-  //   }));
-  // };
+  const updateTodo = text => {
+    if (findTodo(text)) return;
+    setTodos(prevState =>
+      prevState.map(item => {
+        if (item.id === currentTodo.id) {
+          return { ...currentTodo, text };
+        }
+        return item;
+      })
+    );
+    setIsEdit(false);
+    setCurrentTodo({});
+  };
 
   const filteredTodos = getFilteredTodos();
 
@@ -84,18 +74,18 @@ export const Todo = () => {
         <TodoList
           todo={filteredTodos}
           onDelete={deleteTodo}
-          // onEdit={onEdit}
-          // disabled={isEdit}
+          onEdit={onEdit}
+          disabled={isEdit}
         />
-        {/* {isEdit && (
-          <Modal closeModal={this.onEdit}>
+        {isEdit && (
+          <Modal closeModal={onEdit}>
             <EditForm
-              cancelEdit={this.onEdit}
-              updateTodo={this.updateTodo}
+              cancelEdit={onEdit}
+              updateTodo={updateTodo}
               defaultValue={currentTodo.text}
             />
           </Modal>
-        )} */}
+        )}
       </Container>
     </Section>
   );
