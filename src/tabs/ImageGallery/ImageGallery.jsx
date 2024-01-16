@@ -1,20 +1,20 @@
-import React, { useEffect, useState } from "react";
-import { Form } from "components/Form/Form";
-import { getPhotos } from "api/gallery";
-import { ImageGalleryList } from "components/ImageGallery/ImageGalleryList";
-import { Container, Section } from "components";
-import { Loader } from "components/Loader/Loader";
-import Modal from "components/Modal/Modal";
+import React, { useEffect, useState } from 'react';
+import { Form } from 'components/Form/Form';
+import { getPhotos } from 'api/gallery';
+import { ImageGalleryList } from 'components/ImageGallery/ImageGalleryList';
+import { Container, Section } from 'components';
+import { Loader } from 'components/Loader/Loader';
+import { Modal } from 'components/Modal/Modal';
 
 export const ImageGallery = () => {
   const [photos, setPhotos] = useState([]);
-  const [query, setQuery] = useState("");
+  const [query, setQuery] = useState('');
   const [page, setPage] = useState(1);
   const [isLoadMore, setIsLoadMore] = useState(false);
   const [isEmpty, setIsEmpty] = useState(false);
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
-  const [largeImgUrl, setLargeImgUrl] = useState("");
+  const [largeImgUrl, setLargeImgUrl] = useState('');
 
   useEffect(() => {
     if (!query) return;
@@ -52,7 +52,7 @@ export const ImageGallery = () => {
     setPage(prev => prev + 1);
   };
 
-  const handleClickImg = (url = "") => {
+  const handleClickImg = (url = '') => {
     setLargeImgUrl(url);
   };
 
