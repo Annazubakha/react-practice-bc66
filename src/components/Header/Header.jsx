@@ -21,8 +21,12 @@ export const Header = () => {
             <li>
               <NavLink to="props">Props</NavLink>
             </li>
+
             <li>
               <NavLink to="cocktails">Cocktails</NavLink>
+            </li>
+            <li>
+              <NavLink to="searchcocktails">Search Cocktails</NavLink>
             </li>
           </ul>
         </nav>
