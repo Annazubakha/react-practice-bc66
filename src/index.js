@@ -6,11 +6,14 @@ import { ThemeProvider } from 'styled-components';
 import { theme } from 'styles/theme';
 import 'modern-normalize/modern-normalize.css';
 import { GlobalStyle } from 'styles/CreateGlobalStyle';
+import { BrowserRouter } from 'react-router-dom';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <>
     <ThemeProvider theme={theme}>
-      <App />
+      <BrowserRouter basename="/react-practice-bc66">
+        <App />
+      </BrowserRouter>
       <GlobalStyle />
     </ThemeProvider>
   </>
