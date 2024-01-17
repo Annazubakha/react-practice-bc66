@@ -1,9 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
-import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import 'react-tabs/style/react-tabs.css';
-import { ImageGallery, Points, Props, Todo, Cocktails } from 'tabs';
+import { ImageGallery, Points, Props, Todo, Cocktails } from 'pages';
 import { Header } from './Header/Header';
-import { Home } from 'tabs/Home/Home';
+import { Home } from 'pages/Home/Home';
 
 export const App = () => {
   return (
