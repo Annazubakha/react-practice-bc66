@@ -1,16 +1,20 @@
 import { getCoctailDetails } from 'api/coctails';
 import { Container, Section } from 'components';
 import { Loader } from 'components/Loader/Loader';
-import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useEffect, useRef, useState } from 'react';
+import { Link, useLocation, useParams } from 'react-router-dom';
 
 const defaultImg =
   'https://ireland.apollo.olxcdn.com/v1/files/0iq0gb9ppip8-UA/image;s=1000x700';
 
 const CocktailDetails = () => {
   const { id } = useParams();
+  const location = useLocation();
   const [cocktail, setCocktail] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+
+  const goBackLink = useRef(location.state?.from || '/cocktails');
+
   useEffect(() => {
     setIsLoading(true);
     getCoctailDetails(id)
@@ -18,11 +22,11 @@ const CocktailDetails = () => {
       .catch(error => console.log(error.message))
       .finally(() => setIsLoading(false));
   }, [id]);
-  console.log(cocktail);
 
   return (
     <Section>
       <Container>
+        <Link to={goBackLink.current}>Go back</Link>
         {isLoading && <Loader />}
         {cocktail && (
           <div>
