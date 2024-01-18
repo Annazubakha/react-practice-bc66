@@ -7,7 +7,7 @@ import { Container, EditForm, Section } from 'components';
 import { useLocalStorage } from 'hooks/useLocalStorage';
 import { Modal } from 'components/Modal/Modal';
 
-export const Todo = () => {
+const Todo = () => {
   const [todos, setTodos] = useLocalStorage('todoes', []);
   const [filter, setFilter] = useState('');
   const [isEdit, setIsEdit] = useState(false);
@@ -90,3 +90,5 @@ export const Todo = () => {
     </Section>
   );
 };
+
+export default Todo;

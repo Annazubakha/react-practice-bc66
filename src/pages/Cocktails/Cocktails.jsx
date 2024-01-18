@@ -4,7 +4,7 @@ import { CocktailsList } from 'components/CocktailsList/CocktailsList';
 import { Loader } from 'components/Loader/Loader';
 import React, { useEffect, useState } from 'react';
 
-export const Cocktails = () => {
+const Cocktails = () => {
   const [cocktails, setCocktails] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   useEffect(() => {
@@ -23,3 +23,5 @@ export const Cocktails = () => {
     </Section>
   );
 };
+
+export default Cocktails;

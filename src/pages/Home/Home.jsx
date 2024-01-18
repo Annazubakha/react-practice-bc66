@@ -1,5 +1,12 @@
+import { Container, Section } from 'components';
 import React from 'react';
 
-export const Home = () => {
-  return <div>Home</div>;
+const Home = () => {
+  return (
+    <Section>
+      <Container>Welcome to the club</Container>
+    </Section>
+  );
 };
+
+export default Home;

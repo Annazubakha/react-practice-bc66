@@ -6,7 +6,7 @@ import { Container, Section } from 'components';
 import { Loader } from 'components/Loader/Loader';
 import { Modal } from 'components/Modal/Modal';
 
-export const ImageGallery = () => {
+const ImageGallery = () => {
   const [photos, setPhotos] = useState([]);
   const [query, setQuery] = useState('');
   const [page, setPage] = useState(1);
@@ -80,3 +80,5 @@ export const ImageGallery = () => {
     </>
   );
 };
+
+export default ImageGallery;

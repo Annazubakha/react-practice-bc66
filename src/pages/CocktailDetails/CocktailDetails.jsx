@@ -29,7 +29,7 @@ const CocktailDetails = () => {
         <Link to={goBackLink.current}>Go back</Link>
         {isLoading && <Loader />}
         {cocktail && (
-          <div>
+          <div style={{ marginBottom: 20 }}>
             <img
               src={cocktail.strDrinkThumb ? cocktail.strDrinkThumb : defaultImg}
               alt={cocktail.strDrink}
@@ -39,7 +39,10 @@ const CocktailDetails = () => {
             <p>Glass: {cocktail.strGlass}</p>
           </div>
         )}
-        <Link to={'ingredients'}>Ingredients</Link>
+        <Link to={'ingredients'} style={{ marginBottom: 20, display: 'block' }}>
+          Ingredients
+        </Link>
+
         <Outlet />
       </Container>
     </Section>
