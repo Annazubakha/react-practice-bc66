@@ -31,3 +31,8 @@ export const getCoctailDetails = async id => {
   const { data } = await instance.get(`/lookup.php?i=${id}`);
   return data.drinks[0];
 };
+
+export const getCocktailsIngredients = async id => {
+  const { data } = await instance.get(`/lookup.php?iid=${id}`);
+  return data.ingredients;
+};
