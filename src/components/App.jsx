@@ -1,10 +1,22 @@
 import { Route, Routes } from 'react-router-dom';
-import { ImageGallery, Points, Props, Todo, Cocktails } from 'pages';
 import { Header } from './Header/Header';
-import { Home } from 'pages/Home/Home';
-import { SearchCocktails } from 'pages/SearchCocktails/SearchCocktails';
-import CocktailDetails from 'pages/CocktailDetails/CocktailDetails';
-import CocktailIngredients from './CocktailIngredients/CocktailIngredients';
+import { lazy } from 'react';
+
+const Home = lazy(() => import('pages/Home/Home'));
+const Todo = lazy(() => import('pages/Todo/Todo'));
+const ImageGallery = lazy(() => import('pages/ImageGallery/ImageGallery'));
+const Points = lazy(() => import('pages/Points/Points'));
+const Props = lazy(() => import('pages/Props/Props'));
+const Cocktails = lazy(() => import('pages/Cocktails/Cocktails'));
+const SearchCocktails = lazy(() =>
+  import('pages/SearchCocktails/SearchCocktails')
+);
+const CocktailDetails = lazy(() =>
+  import('pages/CocktailDetails/CocktailDetails')
+);
+const CocktailIngredients = lazy(() =>
+  import('components/CocktailIngredients/CocktailIngredients')
+);
 
 export const App = () => {
   return (

@@ -2,7 +2,7 @@ import { BlogCard, Container, Section, Statistics } from 'components';
 import article from 'data/article.json';
 import statistics from 'data/statistics.json';
 
-export const Props = () => {
+const Props = () => {
   return (
     <>
       <Section>
@@ -14,3 +14,5 @@ export const Props = () => {
     </>
   );
 };
+
+export default Props;

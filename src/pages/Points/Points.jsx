@@ -4,7 +4,7 @@ import { Statistics } from 'components/Points/Statistics/Statistics';
 import { Notification } from 'components/Points/Notification/Notification';
 import { Container, Section } from 'components';
 
-export const Points = () => {
+const Points = () => {
   const [points, setPoints] = useState({
     1: 0,
     2: 0,
@@ -48,3 +48,5 @@ export const Points = () => {
     </div>
   );
 };
+
+export default Points;
