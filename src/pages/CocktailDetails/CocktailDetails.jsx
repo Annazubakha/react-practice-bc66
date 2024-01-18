@@ -2,7 +2,7 @@ import { getCoctailDetails } from 'api/coctails';
 import { Container, Section } from 'components';
 import { Loader } from 'components/Loader/Loader';
 import React, { useEffect, useRef, useState } from 'react';
-import { Link, useLocation, useParams } from 'react-router-dom';
+import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
 
 const defaultImg =
   'https://ireland.apollo.olxcdn.com/v1/files/0iq0gb9ppip8-UA/image;s=1000x700';
@@ -39,6 +39,8 @@ const CocktailDetails = () => {
             <p>Glass: {cocktail.strGlass}</p>
           </div>
         )}
+        <Link to={'ingredients'}>Ingredients</Link>
+        <Outlet />
       </Container>
     </Section>
   );
