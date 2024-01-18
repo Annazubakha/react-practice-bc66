@@ -13,7 +13,6 @@ export const Cocktails = () => {
       .then(setCocktails)
       .finally(() => setIsLoading(false));
   }, []);
-  console.log(cocktails);
 
   return (
     <Section>
