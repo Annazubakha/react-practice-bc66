@@ -1,6 +1,6 @@
-import { Loader } from 'components/Loader/Loader';
-import { Suspense } from 'react';
-import { NavLink, Outlet } from 'react-router-dom';
+import { Loader } from "components/Loader/Loader";
+import { Suspense } from "react";
+import { Outlet } from "react-router-dom";
 import {
   Indicator,
   List,
@@ -8,7 +8,9 @@ import {
   StyledHeader,
   Text,
   Item,
-} from './Header.styled';
+  StyledNavLink,
+} from "./Header.styled";
+import { DiAndroid } from "react-icons/di";
 
 export const Header = () => {
   return (
@@ -17,42 +19,49 @@ export const Header = () => {
         <Nav>
           <List>
             <Item>
-              <NavLink to="/">
+              <StyledNavLink to="/">
+                <DiAndroid />
                 <Text>Home</Text>
-              </NavLink>
+              </StyledNavLink>
             </Item>
             <Item>
-              <NavLink to="todo">
+              <StyledNavLink to="todo">
+                <DiAndroid />
                 <Text>Todo</Text>
-              </NavLink>
+              </StyledNavLink>
             </Item>
             <Item>
-              <NavLink to="image">
+              <StyledNavLink to="image">
+                <DiAndroid />
                 <Text>ImageGallery</Text>
-              </NavLink>
+              </StyledNavLink>
             </Item>
             <Item>
-              <NavLink to="points">
+              <StyledNavLink to="points">
+                <DiAndroid />
                 <Text>Points</Text>
-              </NavLink>
+              </StyledNavLink>
             </Item>
             <Item>
-              <NavLink to="props">
+              <StyledNavLink to="props">
+                <DiAndroid />
                 <Text>Props</Text>
-              </NavLink>
+              </StyledNavLink>
             </Item>
 
             <Item>
-              <NavLink to="cocktails">
+              <StyledNavLink to="cocktails">
+                <DiAndroid />
                 <Text>Cocktails</Text>
-              </NavLink>
+              </StyledNavLink>
             </Item>
             <Item>
-              <NavLink to="searchcocktails">
-                <Text>Search Cocktails</Text>
-              </NavLink>
+              <StyledNavLink to="searchcocktails">
+                <DiAndroid />
+                <Text>Search</Text>
+              </StyledNavLink>
             </Item>
-            <Indicator />
+            <Indicator className="indicator" />
           </List>
         </Nav>
       </StyledHeader>
