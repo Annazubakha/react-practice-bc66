@@ -1,4 +1,5 @@
-import { styled } from 'styled-components';
+import { NavLink } from "react-router-dom";
+import { styled } from "styled-components";
 
 export const StyledHeader = styled.header`
   display: flex;
@@ -30,7 +31,7 @@ export const Indicator = styled.li`
   border: 6px solid ${({ theme }) => theme.colors.blue};
   transition: 0.5s;
   &::before {
-    content: '';
+    content: "";
     position: absolute;
     top: 46%;
     left: -22px;
@@ -41,7 +42,7 @@ export const Indicator = styled.li`
     box-shadow: 0 -10px 0 0 ${({ theme }) => theme.colors.blue};
   }
   &::after {
-    content: '';
+    content: "";
     position: absolute;
     top: 46%;
     right: -22px;
@@ -71,4 +72,55 @@ export const Item = styled.li`
 
   width: 70px;
   height: 70px;
+  &:nth-child(1):has(.active)~.indicator {
+    transform: translateX(calc(70px * 0));
+  }
+  &:nth-child(2):has(.active)~.indicator {
+    transform: translateX(calc(70px * 1));
+  }
+  &:nth-child(3):has(.active)~.indicator {
+    transform: translateX(calc(70px * 2));
+  }
+  &:nth-child(4):has(.active)~.indicator {
+    transform: translateX(calc(70px * 3));
+  }
+  &:nth-child(5):has(.active)~.indicator {
+    transform: translateX(calc(70px * 4));
+  }
+  &:nth-child(6):has(.active)~.indicator {
+    transform: translateX(calc(70px * 5));
+  }
+  &:nth-child(7):has(.active)~.indicator {
+    transform: translateX(calc(70px * 6));
+  }
+`;
+
+export const StyledNavLink = styled(NavLink)`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  font-weight: 500;
+  color: ${({ theme }) => theme.colors.link};
+
+  & svg {
+    display: block;
+    line-height: 75px;
+    text-align: center;
+    transition: 0.5s;
+  }
+
+  &:hover svg,
+  &:focus svg,
+  &.active svg {
+    transform: translateY(-35px);
+  }
+
+  &:hover span,
+  &:focus span,
+  &.active span {
+    opacity: 1;
+    transform: translateY(10px);
+  }
 `;

@@ -8,6 +8,7 @@ export const theme = Object.freeze({
     blue: '#378bdb',
     indicator: '#5ADB6F',
     lightgreen: '#37DBC2',
+    link: "#fc7245",
     tagBackground: ['linear-gradient(to bottom, #FFD194, #D1913C)'],
   },
   spacing: value => `${value * 4}px`,
