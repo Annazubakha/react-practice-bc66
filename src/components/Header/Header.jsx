@@ -1,38 +1,61 @@
 import { Loader } from 'components/Loader/Loader';
 import { Suspense } from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
+import {
+  Indicator,
+  List,
+  Nav,
+  StyledHeader,
+  Text,
+  Item,
+} from './Header.styled';
 
 export const Header = () => {
   return (
     <>
-      <header>
-        <nav>
-          <ul>
-            <li>
-              <NavLink to="/">Home</NavLink>
-            </li>
-            <li>
-              <NavLink to="todo">Todo</NavLink>
-            </li>
-            <li>
-              <NavLink to="image">ImageGallery</NavLink>
-            </li>
-            <li>
-              <NavLink to="points">Points</NavLink>
-            </li>
-            <li>
-              <NavLink to="props">Props</NavLink>
-            </li>
+      <StyledHeader>
+        <Nav>
+          <List>
+            <Item>
+              <NavLink to="/">
+                <Text>Home</Text>
+              </NavLink>
+            </Item>
+            <Item>
+              <NavLink to="todo">
+                <Text>Todo</Text>
+              </NavLink>
+            </Item>
+            <Item>
+              <NavLink to="image">
+                <Text>ImageGallery</Text>
+              </NavLink>
+            </Item>
+            <Item>
+              <NavLink to="points">
+                <Text>Points</Text>
+              </NavLink>
+            </Item>
+            <Item>
+              <NavLink to="props">
+                <Text>Props</Text>
+              </NavLink>
+            </Item>
 
-            <li>
-              <NavLink to="cocktails">Cocktails</NavLink>
-            </li>
-            <li>
-              <NavLink to="searchcocktails">Search Cocktails</NavLink>
-            </li>
-          </ul>
-        </nav>
-      </header>
+            <Item>
+              <NavLink to="cocktails">
+                <Text>Cocktails</Text>
+              </NavLink>
+            </Item>
+            <Item>
+              <NavLink to="searchcocktails">
+                <Text>Search Cocktails</Text>
+              </NavLink>
+            </Item>
+            <Indicator />
+          </List>
+        </Nav>
+      </StyledHeader>
       <Suspense fallback={<Loader />}>
         <Outlet />
       </Suspense>
