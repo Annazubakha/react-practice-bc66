@@ -5,4 +5,4 @@ export * from 'components/Props/Statistics/Statistics';
 export * from 'components/Props/StatisticsItem/StatisticsItem';
 export * from 'components/Todo/EditForm/EditForm.jsx';
 export * from 'components/Header/Header.jsx';
-export * from 'components/ToDoForm/ToDoForm.jsx';
+export * from 'components/Todo/ToDoForm/ToDoForm.jsx';
