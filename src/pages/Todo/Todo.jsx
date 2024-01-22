@@ -1,9 +1,8 @@
-import { Form } from 'components/Form/Form';
 import { TodoList } from 'components/Todo/TodoList';
 import React, { useState } from 'react';
 import { nanoid } from 'nanoid';
 import { TodoFilter } from 'components/Todo/TodoFilter';
-import { Container, EditForm, Section } from 'components';
+import { Container, EditForm, Section, ToDoForm } from 'components';
 import { useLocalStorage } from 'hooks/useLocalStorage';
 import { Modal } from 'components/Modal/Modal';
 
@@ -69,7 +68,7 @@ const Todo = () => {
   return (
     <Section>
       <Container>
-        <Form addTodo={addTodo} text="Add todos" />
+        <ToDoForm text="Add todos" />
         <TodoFilter value={filter} onChange={filterChange} />
         <TodoList
           todo={filteredTodos}
