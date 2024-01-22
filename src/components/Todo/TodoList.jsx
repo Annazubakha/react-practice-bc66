@@ -1,9 +1,15 @@
-import { RiDeleteBinLine, RiEdit2Line } from 'react-icons/ri';
+import { RiDeleteBinLine } from 'react-icons/ri';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectTodos } from '../../redux/selectors';
+import { deleteToDo } from '../../redux/actions';
 
-export const TodoList = ({ todo, onDelete, disabled = false, onEdit }) => {
+export const TodoList = () => {
+  const todos = useSelector(selectTodos);
+  const dispatch = useDispatch();
+
   return (
     <ul style={{ display: 'flex', gap: '8px' }}>
-      {todo.map(item => (
+      {todos.map(item => (
         <li
           key={item.id}
           style={{
@@ -23,25 +29,25 @@ export const TodoList = ({ todo, onDelete, disabled = false, onEdit }) => {
               top: 0,
             }}
             type="button"
-            onClick={() => onDelete(item.id)}
-            disabled={disabled}
+            onClick={() => dispatch(deleteToDo(item.id))}
           >
-            <RiDeleteBinLine size={16} color={disabled ? 'grey' : 'red'} />
-          </button>
-          <button
-            type="button"
-            style={{
-              position: 'absolute',
-              right: 0,
-              bottom: 0,
-            }}
-            disabled={disabled}
-            onClick={() => onEdit(item)}
-          >
-            <RiEdit2Line size={16} color={disabled ? 'grey' : 'lightblue'} />
+            <RiDeleteBinLine size={16} color={'red'} />
           </button>
         </li>
       ))}
     </ul>
   );
 };
+
+//  <button
+//    type="button"
+//    style={{
+//      position: 'absolute',
+//      right: 0,
+//      bottom: 0,
+//    }}
+//    disabled={disabled}
+//    onClick={() => onEdit(item)}
+//  >
+//    <RiEdit2Line size={16} color={disabled ? 'grey' : 'lightblue'} />
+//  </button>;

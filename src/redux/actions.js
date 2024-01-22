@@ -1,5 +1,5 @@
 import { nanoid } from 'nanoid';
-import { ADD_TODO } from './types';
+import { ADD_TODO, DELETE_TODO } from './types';
 
 export const addToDo = text => {
   return {
@@ -8,5 +8,12 @@ export const addToDo = text => {
       text,
       id: nanoid(),
     },
+  };
+};
+
+export const deleteToDo = id => {
+  return {
+    type: DELETE_TODO,
+    payload: id,
   };
 };
