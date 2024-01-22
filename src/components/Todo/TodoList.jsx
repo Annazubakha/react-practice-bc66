@@ -1,15 +1,24 @@
 import { RiDeleteBinLine } from 'react-icons/ri';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectTodos } from '../../redux/selectors';
+import { selectFilter, selectTodos } from '../../redux/selectors';
 import { deleteToDo } from '../../redux/actions';
 
 export const TodoList = () => {
   const todos = useSelector(selectTodos);
+  const filter = useSelector(selectFilter);
   const dispatch = useDispatch();
+
+  const getFilteredTodos = () => {
+    return todos.filter(item =>
+      item.text.toLowerCase().includes(filter.toLowerCase())
+    );
+  };
+
+  const filteredTodos = getFilteredTodos();
 
   return (
     <ul style={{ display: 'flex', gap: '8px' }}>
-      {todos.map(item => (
+      {filteredTodos.map(item => (
         <li
           key={item.id}
           style={{

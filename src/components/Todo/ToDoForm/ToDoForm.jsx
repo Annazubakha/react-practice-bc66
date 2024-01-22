@@ -1,14 +1,20 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { addToDo } from '../../redux/actions';
+import { useDispatch, useSelector } from 'react-redux';
+import { addToDo } from '../../../redux/actions';
+import { selectTodos } from '../../../redux/selectors';
 
 export const ToDoForm = ({ text }) => {
   const [query, setQuery] = useState('');
 
   const dispatch = useDispatch();
+  const todos = useSelector(selectTodos);
 
   const handleSubmit = e => {
     e.preventDefault();
+
+    if (findTodo(query)) {
+      return;
+    }
 
     dispatch(addToDo(query));
     setQuery('');
@@ -17,6 +23,18 @@ export const ToDoForm = ({ text }) => {
   const handleChange = e => {
     const { value } = e.target;
     setQuery(value);
+  };
+
+  const findTodo = text => {
+    const isExist = todos.find(
+      item => item.text.toLowerCase() === text.toLowerCase()
+    );
+
+    if (isExist) {
+      alert(`Todo: ${text} is already exist`);
+    }
+
+    return isExist;
   };
 
   return (
