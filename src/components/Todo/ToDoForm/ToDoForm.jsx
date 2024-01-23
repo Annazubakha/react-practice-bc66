@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addToDo } from '../../../redux/actions';
+import { addTodo } from '../../../redux/reducer';
 import { selectTodos } from '../../../redux/selectors';
 
 export const ToDoForm = ({ text }) => {
@@ -16,7 +16,7 @@ export const ToDoForm = ({ text }) => {
       return;
     }
 
-    dispatch(addToDo(query));
+    dispatch(addTodo(query));
     setQuery('');
   };
 

@@ -1,16 +1,33 @@
 import { combineReducers } from 'redux';
-import { ADD_TODO, DELETE_TODO, FILTER_TODO } from './types';
 
-export const todoReducer = (state = [], action) => {
-  switch (action.type) {
-    case ADD_TODO:
-      return [...state, action.payload];
-    case DELETE_TODO:
+import { createSlice, nanoid } from '@reduxjs/toolkit';
+
+const todoSlice = createSlice({
+  // Ім'я слайсу
+  name: 'todos',
+  // Початковий стан редюсера слайсу
+  initialState: [],
+  // Об'єкт редюсерів
+  reducers: {
+    addTodo: {
+      reducer(state, action) {
+        state.push(action.payload);
+      },
+      prepare(text) {
+        return {
+          payload: {
+            text,
+            id: nanoid(),
+          },
+        };
+      },
+    },
+
+    deleteTodo(state, action) {
       return state.filter(item => item.id !== action.payload);
-    default:
-      return state;
-  }
-};
+    },
+  },
+});
 
 export const filterReducer = (state = '', action) => {
   switch (action.type) {
@@ -20,8 +37,9 @@ export const filterReducer = (state = '', action) => {
       return state;
   }
 };
+export const { addTodo, deleteTodo } = todoSlice.actions;
 
 export const rootReducer = combineReducers({
-  todos: todoReducer,
+  todos: todoSlice.reducer,
   filter: filterReducer,
 });
