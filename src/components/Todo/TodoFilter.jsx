@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux';
-import { filterTodo } from '../../redux/actions';
+import { filterTodo } from '../../redux/filterSlice';
 
 export const TodoFilter = () => {
   const dispatch = useDispatch();

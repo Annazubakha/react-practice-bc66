@@ -1,7 +1,7 @@
 import { RiDeleteBinLine } from 'react-icons/ri';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectFilter, selectTodos } from '../../redux/selectors';
-import { deleteTodo } from '../../redux/reducer';
+import { deleteTodo } from '../../redux/todoSlice';
 
 export const TodoList = () => {
   const todos = useSelector(selectTodos);
