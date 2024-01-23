@@ -1,7 +1,7 @@
 import { RiDeleteBinLine } from 'react-icons/ri';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectFilter, selectTodos } from '../../redux/selectors';
-import { deleteToDo } from '../../redux/actions';
+import { deleteTodo } from '../../redux/reducer';
 
 export const TodoList = () => {
   const todos = useSelector(selectTodos);
@@ -38,7 +38,7 @@ export const TodoList = () => {
               top: 0,
             }}
             type="button"
-            onClick={() => dispatch(deleteToDo(item.id))}
+            onClick={() => dispatch(deleteTodo(item.id))}
           >
             <RiDeleteBinLine size={16} color={'red'} />
           </button>
