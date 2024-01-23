@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addTodo } from '../../../redux/reducer';
+import { addTodo } from '../../../redux/todoSlice';
 import { selectTodos } from '../../../redux/selectors';
 
 export const ToDoForm = ({ text }) => {

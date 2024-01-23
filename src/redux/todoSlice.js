@@ -1,5 +1,3 @@
-import { combineReducers } from 'redux';
-
 import { createSlice, nanoid } from '@reduxjs/toolkit';
 
 const todoSlice = createSlice({
@@ -29,17 +27,6 @@ const todoSlice = createSlice({
   },
 });
 
-export const filterReducer = (state = '', action) => {
-  switch (action.type) {
-    case FILTER_TODO:
-      return action.payload;
-    default:
-      return state;
-  }
-};
 export const { addTodo, deleteTodo } = todoSlice.actions;
 
-export const rootReducer = combineReducers({
-  todos: todoSlice.reducer,
-  filter: filterReducer,
-});
+export const todoSliceReducer = todoSlice.reducer;
