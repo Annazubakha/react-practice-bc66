@@ -17,7 +17,7 @@ export const TodoList = () => {
   const filteredTodos = getFilteredTodos();
 
   return (
-    <ul style={{ display: 'flex', gap: '8px' }}>
+    <ul style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
       {filteredTodos.map(item => (
         <li
           key={item.id}
