@@ -1,4 +1,5 @@
 import { createSlice, nanoid } from '@reduxjs/toolkit';
+import { fetchTodos } from './operations';
 
 const todoSlice = createSlice({
   // Ім'я слайсу
@@ -25,6 +26,10 @@ const todoSlice = createSlice({
       return state.filter(item => item.id !== action.payload);
     },
   },
+  extraReducers: builder =>
+    builder.addCase(fetchTodos.fulfilled, (state, action) => {
+      return action.payload;
+    }),
 });
 
 export const { addTodo, deleteTodo } = todoSlice.actions;
