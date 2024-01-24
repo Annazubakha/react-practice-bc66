@@ -7,18 +7,18 @@ import { theme } from 'styles/theme';
 import 'modern-normalize/modern-normalize.css';
 import { GlobalStyle } from 'styles/CreateGlobalStyle';
 import { BrowserRouter } from 'react-router-dom';
-import { persistor, store } from './redux/store';
+import { store } from './redux/store';
 import { Provider } from 'react-redux';
-import { PersistGate } from 'redux-persist/integration/react';
+// import { PersistGate } from 'redux-persist/integration/react';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <>
     <ThemeProvider theme={theme}>
       <BrowserRouter basename="/react-practice-bc66">
         <Provider store={store}>
-          <PersistGate loading={null} persistor={persistor}>
-            <App />
-          </PersistGate>
+          {/* <PersistGate loading={null} persistor={persistor}> */}
+          <App />
+          {/* </PersistGate> */}
         </Provider>
       </BrowserRouter>
       <GlobalStyle />

@@ -1,5 +1,5 @@
-import { createSlice, nanoid } from '@reduxjs/toolkit';
-import { fetchTodos } from './operations';
+import { createSlice } from '@reduxjs/toolkit';
+import { addTodo, deleteTodo, fetchTodos } from './operations';
 
 const todoSlice = createSlice({
   // Ім'я слайсу
@@ -7,31 +7,17 @@ const todoSlice = createSlice({
   // Початковий стан редюсера слайсу
   initialState: [],
   // Об'єкт редюсерів
-  reducers: {
-    addTodo: {
-      reducer(state, action) {
-        state.push(action.payload);
-      },
-      prepare(text) {
-        return {
-          payload: {
-            text,
-            id: nanoid(),
-          },
-        };
-      },
-    },
-
-    deleteTodo(state, action) {
-      return state.filter(item => item.id !== action.payload);
-    },
-  },
   extraReducers: builder =>
-    builder.addCase(fetchTodos.fulfilled, (state, action) => {
-      return action.payload;
-    }),
+    builder
+      .addCase(fetchTodos.fulfilled, (_, action) => {
+        return action.payload;
+      })
+      .addCase(addTodo.fulfilled, (state, action) => {
+        state.push(action.payload);
+      })
+      .addCase(deleteTodo.fulfilled, (state, action) => {
+        return state.filter(item => item.id !== action.payload.id);
+      }),
 });
-
-export const { addTodo, deleteTodo } = todoSlice.actions;
 
 export const todoSliceReducer = todoSlice.reducer;
