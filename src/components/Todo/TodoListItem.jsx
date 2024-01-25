@@ -45,7 +45,7 @@ export const TodoListItem = ({ id, text }) => {
       </button>
       {isEdit && (
         <Modal>
-          <EditForm defaultValue={text} id={id} />
+          <EditForm defaultValue={text} id={id} cancelEdit={setIsEdit} />
         </Modal>
       )}
     </li>

@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { addTodo, deleteTodo, fetchTodos } from './operations';
+import { addTodo, deleteTodo, editTodo, fetchTodos } from './operations';
 
 const todoSlice = createSlice({
   // Ім'я слайсу
@@ -17,6 +17,14 @@ const todoSlice = createSlice({
       })
       .addCase(deleteTodo.fulfilled, (state, action) => {
         return state.filter(item => item.id !== action.payload.id);
+      })
+      .addCase(editTodo.fulfilled, (state, action) => {
+        return state.map(item => {
+          if (item.id === action.payload.id) {
+            return action.payload;
+          }
+          return item;
+        });
       }),
 });
 
