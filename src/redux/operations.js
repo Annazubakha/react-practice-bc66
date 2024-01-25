@@ -40,3 +40,14 @@ export const deleteTodo = createAsyncThunk(
     }
   }
 );
+
+export const editTodo = createAsyncThunk(
+  'todos/editTodo',
+  async ({ text, id }, thunkAPI) => {
+    try {
+      const { data } = await instance.put(`/todos/${id}`, { text });
+      console.log(data);
+      return data;
+    } catch (error) {}
+  }
+);
