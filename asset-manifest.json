@@ -1,33 +1,31 @@
 {
   "files": {
     "main.css": "/react-practice-bc66/static/css/main.f2db3b31.css",
-    "main.js": "/react-practice-bc66/static/js/main.7a39a254.js",
-    "static/js/544.3bc0be7a.chunk.js": "/react-practice-bc66/static/js/544.3bc0be7a.chunk.js",
-    "static/js/165.831d2456.chunk.js": "/react-practice-bc66/static/js/165.831d2456.chunk.js",
-    "static/js/302.a86e6d3a.chunk.js": "/react-practice-bc66/static/js/302.a86e6d3a.chunk.js",
-    "static/js/46.023bd356.chunk.js": "/react-practice-bc66/static/js/46.023bd356.chunk.js",
-    "static/js/396.39734f37.chunk.js": "/react-practice-bc66/static/js/396.39734f37.chunk.js",
-    "static/js/974.b1efcd1a.chunk.js": "/react-practice-bc66/static/js/974.b1efcd1a.chunk.js",
-    "static/js/740.230ba209.chunk.js": "/react-practice-bc66/static/js/740.230ba209.chunk.js",
-    "static/js/96.9900b32d.chunk.js": "/react-practice-bc66/static/js/96.9900b32d.chunk.js",
+    "main.js": "/react-practice-bc66/static/js/main.6055d583.js",
+    "static/js/544.b833bbbd.chunk.js": "/react-practice-bc66/static/js/544.b833bbbd.chunk.js",
+    "static/js/165.67b5ac52.chunk.js": "/react-practice-bc66/static/js/165.67b5ac52.chunk.js",
+    "static/js/302.cccd6a5e.chunk.js": "/react-practice-bc66/static/js/302.cccd6a5e.chunk.js",
+    "static/js/46.3ab43070.chunk.js": "/react-practice-bc66/static/js/46.3ab43070.chunk.js",
+    "static/js/396.5948a493.chunk.js": "/react-practice-bc66/static/js/396.5948a493.chunk.js",
+    "static/js/974.eb271d4b.chunk.js": "/react-practice-bc66/static/js/974.eb271d4b.chunk.js",
+    "static/js/740.7eb4e090.chunk.js": "/react-practice-bc66/static/js/740.7eb4e090.chunk.js",
+    "static/js/96.a8353ede.chunk.js": "/react-practice-bc66/static/js/96.a8353ede.chunk.js",
     "static/js/340.672d203c.chunk.js": "/react-practice-bc66/static/js/340.672d203c.chunk.js",
-    "static/js/962.70b54178.chunk.js": "/react-practice-bc66/static/js/962.70b54178.chunk.js",
     "index.html": "/react-practice-bc66/index.html",
     "main.f2db3b31.css.map": "/react-practice-bc66/static/css/main.f2db3b31.css.map",
-    "main.7a39a254.js.map": "/react-practice-bc66/static/js/main.7a39a254.js.map",
-    "544.3bc0be7a.chunk.js.map": "/react-practice-bc66/static/js/544.3bc0be7a.chunk.js.map",
-    "165.831d2456.chunk.js.map": "/react-practice-bc66/static/js/165.831d2456.chunk.js.map",
-    "302.a86e6d3a.chunk.js.map": "/react-practice-bc66/static/js/302.a86e6d3a.chunk.js.map",
-    "46.023bd356.chunk.js.map": "/react-practice-bc66/static/js/46.023bd356.chunk.js.map",
-    "396.39734f37.chunk.js.map": "/react-practice-bc66/static/js/396.39734f37.chunk.js.map",
-    "974.b1efcd1a.chunk.js.map": "/react-practice-bc66/static/js/974.b1efcd1a.chunk.js.map",
-    "740.230ba209.chunk.js.map": "/react-practice-bc66/static/js/740.230ba209.chunk.js.map",
-    "96.9900b32d.chunk.js.map": "/react-practice-bc66/static/js/96.9900b32d.chunk.js.map",
-    "340.672d203c.chunk.js.map": "/react-practice-bc66/static/js/340.672d203c.chunk.js.map",
-    "962.70b54178.chunk.js.map": "/react-practice-bc66/static/js/962.70b54178.chunk.js.map"
+    "main.6055d583.js.map": "/react-practice-bc66/static/js/main.6055d583.js.map",
+    "544.b833bbbd.chunk.js.map": "/react-practice-bc66/static/js/544.b833bbbd.chunk.js.map",
+    "165.67b5ac52.chunk.js.map": "/react-practice-bc66/static/js/165.67b5ac52.chunk.js.map",
+    "302.cccd6a5e.chunk.js.map": "/react-practice-bc66/static/js/302.cccd6a5e.chunk.js.map",
+    "46.3ab43070.chunk.js.map": "/react-practice-bc66/static/js/46.3ab43070.chunk.js.map",
+    "396.5948a493.chunk.js.map": "/react-practice-bc66/static/js/396.5948a493.chunk.js.map",
+    "974.eb271d4b.chunk.js.map": "/react-practice-bc66/static/js/974.eb271d4b.chunk.js.map",
+    "740.7eb4e090.chunk.js.map": "/react-practice-bc66/static/js/740.7eb4e090.chunk.js.map",
+    "96.a8353ede.chunk.js.map": "/react-practice-bc66/static/js/96.a8353ede.chunk.js.map",
+    "340.672d203c.chunk.js.map": "/react-practice-bc66/static/js/340.672d203c.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.f2db3b31.css",
-    "static/js/main.7a39a254.js"
+    "static/js/main.6055d583.js"
   ]
 }
