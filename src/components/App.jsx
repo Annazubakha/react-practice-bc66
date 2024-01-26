@@ -1,27 +1,32 @@
-import { Route, Routes } from 'react-router-dom';
-import { Header } from './Header/Header';
-import { lazy } from 'react';
-import { ToggleTheme } from './ToggleTheme/ToggleTheme';
+import { Route, Routes } from "react-router-dom"
+import { Header } from "./Header/Header"
+import { lazy, useContext } from "react"
+import { ToggleTheme } from "./ToggleTheme/ToggleTheme"
+import { ThemeContext } from "./ThemeContext/ThemeContext"
+import { ThemeProvider } from "styled-components"
+import { theme } from "styles/theme"
 
-const Home = lazy(() => import('pages/Home/Home'));
-const Todo = lazy(() => import('pages/Todo/Todo'));
-const ImageGallery = lazy(() => import('pages/ImageGallery/ImageGallery'));
-const Points = lazy(() => import('pages/Points/Points'));
-const Props = lazy(() => import('pages/Props/Props'));
-const Cocktails = lazy(() => import('pages/Cocktails/Cocktails'));
+const Home = lazy(() => import("pages/Home/Home"))
+const Todo = lazy(() => import("pages/Todo/Todo"))
+const ImageGallery = lazy(() => import("pages/ImageGallery/ImageGallery"))
+const Points = lazy(() => import("pages/Points/Points"))
+const Props = lazy(() => import("pages/Props/Props"))
+const Cocktails = lazy(() => import("pages/Cocktails/Cocktails"))
 const SearchCocktails = lazy(() =>
-  import('pages/SearchCocktails/SearchCocktails')
-);
+  import("pages/SearchCocktails/SearchCocktails")
+)
 const CocktailDetails = lazy(() =>
-  import('pages/CocktailDetails/CocktailDetails')
-);
+  import("pages/CocktailDetails/CocktailDetails")
+)
 const CocktailIngredients = lazy(() =>
-  import('components/CocktailIngredients/CocktailIngredients')
-);
+  import("components/CocktailIngredients/CocktailIngredients")
+)
 
 export const App = () => {
+  const { theme: themeColor } = useContext(ThemeContext)
+
   return (
-    <>
+    <ThemeProvider theme={theme[themeColor]}>
       <Routes>
         <Route path="/" element={<Header />}>
           <Route index element={<Home />} />
@@ -37,6 +42,6 @@ export const App = () => {
         </Route>
       </Routes>
       <ToggleTheme />
-    </>
-  );
-};
+    </ThemeProvider>
+  )
+}

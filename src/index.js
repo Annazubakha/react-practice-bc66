@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom/client';
 import { App } from 'components/App';
 import './index.css';
 import { ThemeProvider } from './components/ThemeContext/ThemeContext.jsx';
-import { theme } from 'styles/theme';
 import 'modern-normalize/modern-normalize.css';
 import { GlobalStyle } from 'styles/CreateGlobalStyle';
 import { BrowserRouter } from 'react-router-dom';
@@ -13,7 +12,7 @@ import { Provider } from 'react-redux';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <>
-    <ThemeProvider theme={theme.dark}>
+    {/* <ThemeProvider theme={theme.dark}> */}
       <BrowserRouter basename="/react-practice-bc66">
         <Provider store={store}>
           <ThemeProvider>
@@ -24,6 +23,6 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         </Provider>
       </BrowserRouter>
       <GlobalStyle />
-    </ThemeProvider>
+    {/* </ThemeProvider> */}
   </>
 );

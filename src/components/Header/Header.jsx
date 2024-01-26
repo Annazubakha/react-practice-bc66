@@ -1,8 +1,7 @@
 import { Loader } from "components/Loader/Loader";
-import { Suspense } from "react";
+import { Suspense, useState } from "react";
 import { Outlet } from "react-router-dom";
 import {
-  Indicator,
   List,
   Nav,
   StyledHeader,
@@ -13,55 +12,59 @@ import {
 import { DiAndroid } from "react-icons/di";
 
 export const Header = () => {
+  const [selectedItem, setSelectedItem] = useState(0);
+
   return (
     <>
       <StyledHeader>
         <Nav>
-          <List>
+          <List $selectedItem={selectedItem}>
             <Item>
-              <StyledNavLink to="/">
+              <StyledNavLink to="/" onClick={() => setSelectedItem(0)}>
                 <DiAndroid />
                 <Text>Home</Text>
               </StyledNavLink>
             </Item>
             <Item>
-              <StyledNavLink to="todo">
+              <StyledNavLink to="todo" onClick={() => setSelectedItem(1)}>
                 <DiAndroid />
                 <Text>Todo</Text>
               </StyledNavLink>
             </Item>
             <Item>
-              <StyledNavLink to="image">
+              <StyledNavLink to="image" onClick={() => setSelectedItem(2)}>
                 <DiAndroid />
                 <Text>ImageGallery</Text>
               </StyledNavLink>
             </Item>
             <Item>
-              <StyledNavLink to="points">
+              <StyledNavLink to="points" onClick={() => setSelectedItem(3)}>
                 <DiAndroid />
                 <Text>Points</Text>
               </StyledNavLink>
             </Item>
             <Item>
-              <StyledNavLink to="props">
+              <StyledNavLink to="props" onClick={() => setSelectedItem(4)}>
                 <DiAndroid />
                 <Text>Props</Text>
               </StyledNavLink>
             </Item>
 
             <Item>
-              <StyledNavLink to="cocktails">
+              <StyledNavLink to="cocktails" onClick={() => setSelectedItem(5)}>
                 <DiAndroid />
                 <Text>Cocktails</Text>
               </StyledNavLink>
             </Item>
             <Item>
-              <StyledNavLink to="searchcocktails">
+              <StyledNavLink
+                to="searchcocktails"
+                onClick={() => setSelectedItem(6)}
+              >
                 <DiAndroid />
                 <Text>Search</Text>
               </StyledNavLink>
             </Item>
-            <Indicator className="indicator" />
           </List>
         </Nav>
       </StyledHeader>

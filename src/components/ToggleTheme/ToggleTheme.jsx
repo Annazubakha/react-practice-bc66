@@ -1,15 +1,13 @@
-import { useState } from 'react';
-import Switch from 'react-switch';
+import { ThemeContext } from "components/ThemeContext/ThemeContext"
+import { useContext } from "react"
+import Switch from "react-switch"
 
 export const ToggleTheme = () => {
-  const [checked, setChecked] = useState(false);
-  const handleChange = checked => {
-    setChecked(checked);
-  };
-  console.log(checked);
+  const { theme, toggleTheme } = useContext(ThemeContext)
+
   return (
     <div>
-      <Switch onChange={handleChange} checked={checked} />
+      <Switch onChange={toggleTheme} checked={theme === "dark"} />
     </div>
-  );
-};
+  )
+}
