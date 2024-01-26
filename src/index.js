@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { App } from 'components/App';
 import './index.css';
-import { ThemeProvider } from 'styled-components';
+import { ThemeProvider } from './components/ThemeContext/ThemeContext.jsx';
 import { theme } from 'styles/theme';
 import 'modern-normalize/modern-normalize.css';
 import { GlobalStyle } from 'styles/CreateGlobalStyle';
@@ -13,12 +13,14 @@ import { Provider } from 'react-redux';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <>
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={theme.dark}>
       <BrowserRouter basename="/react-practice-bc66">
         <Provider store={store}>
-          {/* <PersistGate loading={null} persistor={persistor}> */}
-          <App />
-          {/* </PersistGate> */}
+          <ThemeProvider>
+            {/* <PersistGate loading={null} persistor={persistor}> */}
+            <App />
+            {/* </PersistGate> */}
+          </ThemeProvider>
         </Provider>
       </BrowserRouter>
       <GlobalStyle />

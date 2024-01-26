@@ -1,6 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
 import { Header } from './Header/Header';
 import { lazy } from 'react';
+import { ToggleTheme } from './ToggleTheme/ToggleTheme';
 
 const Home = lazy(() => import('pages/Home/Home'));
 const Todo = lazy(() => import('pages/Todo/Todo'));
@@ -35,6 +36,7 @@ export const App = () => {
           </Route>
         </Route>
       </Routes>
+      <ToggleTheme />
     </>
   );
 };
