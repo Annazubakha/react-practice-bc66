@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { RiDeleteBinLine, RiEdit2Line } from 'react-icons/ri';
 import { EditForm } from './EditForm/EditForm';
 import { useDispatch } from 'react-redux';
-import { deleteTodo } from '../../redux/operations';
+import { deleteTodo } from 'myRedux/todos/operations';
 
 export const TodoListItem = ({ id, text }) => {
   const [isEdit, setIsEdit] = useState(false);

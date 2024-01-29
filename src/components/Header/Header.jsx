@@ -1,6 +1,6 @@
-import { Loader } from "components/Loader/Loader";
-import { Suspense, useState } from "react";
-import { Outlet } from "react-router-dom";
+import { Loader } from 'components/Loader/Loader';
+import { Suspense, useState } from 'react';
+import { Outlet } from 'react-router-dom';
 import {
   List,
   Nav,
@@ -8,8 +8,8 @@ import {
   Text,
   Item,
   StyledNavLink,
-} from "./Header.styled";
-import { DiAndroid } from "react-icons/di";
+} from './Header.styled';
+import { DiAndroid } from 'react-icons/di';
 
 export const Header = () => {
   const [selectedItem, setSelectedItem] = useState(0);
@@ -26,25 +26,37 @@ export const Header = () => {
               </StyledNavLink>
             </Item>
             <Item>
-              <StyledNavLink to="todo" onClick={() => setSelectedItem(1)}>
+              <StyledNavLink to="register" onClick={() => setSelectedItem(1)}>
+                <DiAndroid />
+                <Text>Register</Text>
+              </StyledNavLink>
+            </Item>
+            <Item>
+              <StyledNavLink to="login" onClick={() => setSelectedItem(2)}>
+                <DiAndroid />
+                <Text>Login</Text>
+              </StyledNavLink>
+            </Item>
+            <Item>
+              <StyledNavLink to="todo" onClick={() => setSelectedItem(3)}>
                 <DiAndroid />
                 <Text>Todo</Text>
               </StyledNavLink>
             </Item>
             <Item>
-              <StyledNavLink to="image" onClick={() => setSelectedItem(2)}>
+              <StyledNavLink to="image" onClick={() => setSelectedItem(4)}>
                 <DiAndroid />
                 <Text>ImageGallery</Text>
               </StyledNavLink>
             </Item>
             <Item>
-              <StyledNavLink to="points" onClick={() => setSelectedItem(3)}>
+              <StyledNavLink to="points" onClick={() => setSelectedItem(5)}>
                 <DiAndroid />
                 <Text>Points</Text>
               </StyledNavLink>
             </Item>
             <Item>
-              <StyledNavLink to="props" onClick={() => setSelectedItem(4)}>
+              <StyledNavLink to="props" onClick={() => setSelectedItem(6)}>
                 <DiAndroid />
                 <Text>Props</Text>
               </StyledNavLink>

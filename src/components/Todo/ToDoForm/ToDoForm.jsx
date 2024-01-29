@@ -1,7 +1,7 @@
+import { addTodo } from 'myRedux/todos/operations';
+import { selectTodos } from 'myRedux/todos/selectors';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectTodos } from '../../../redux/selectors';
-import { addTodo } from '../../../redux/operations';
 
 export const ToDoForm = ({ text }) => {
   const [query, setQuery] = useState('');

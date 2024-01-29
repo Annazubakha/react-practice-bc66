@@ -1,8 +1,8 @@
 import { RiSaveLine } from 'react-icons/ri';
 import { MdOutlineCancel } from 'react-icons/md';
-import { editTodo } from '../../../redux/operations';
 import { useDispatch } from 'react-redux';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
+import { editTodo } from 'myRedux/todos/operations';
 
 export const EditForm = ({ defaultValue, id, cancelEdit }) => {
   const dispatch = useDispatch();
