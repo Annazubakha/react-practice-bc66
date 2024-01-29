@@ -4,7 +4,7 @@ import React, { useEffect } from 'react';
 import { TodoFilter } from 'components/Todo/TodoFilter';
 import { Container, Section, ToDoForm } from 'components';
 import { useDispatch } from 'react-redux';
-import { fetchTodos } from '../../redux/operations';
+import { fetchTodos } from 'myRedux/todos/operations';
 
 const Todo = () => {
   const dispatch = useDispatch();

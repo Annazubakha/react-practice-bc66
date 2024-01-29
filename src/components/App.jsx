@@ -21,6 +21,8 @@ const CocktailDetails = lazy(() =>
 const CocktailIngredients = lazy(() =>
   import('components/CocktailIngredients/CocktailIngredients')
 );
+const Login = lazy(() => import('pages/Login/Login'));
+const Register = lazy(() => import('pages/Register/Register'));
 
 export const App = () => {
   const { theme: themeColor } = useContext(ThemeContext);
@@ -31,6 +33,8 @@ export const App = () => {
         <Route path="/" element={<Header />}>
           <Route index element={<Home />} />
           <Route path="todo" element={<Todo />} />
+          <Route path="login" element={<Login />} />
+          <Route path="register" element={<Register />} />
           <Route path="image" element={<ImageGallery />} />
           <Route path="points" element={<Points />} />
           <Route path="props" element={<Props />} />
