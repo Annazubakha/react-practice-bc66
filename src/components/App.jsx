@@ -1,10 +1,12 @@
 import { Route, Routes } from 'react-router-dom';
 import { Header } from './Header/Header';
-import { lazy, useContext } from 'react';
+import { lazy, useContext, useEffect } from 'react';
 import { ThemeContext } from './ThemeContext/ThemeContext';
 import { ThemeProvider } from 'styled-components';
 import { theme } from 'styles/theme';
 import { ScrollToTop, ToggleTheme } from 'components';
+import { useDispatch } from 'react-redux';
+import { refreshUser } from 'myRedux/auth/operations';
 
 const Home = lazy(() => import('pages/Home/Home'));
 const Todo = lazy(() => import('pages/Todo/Todo'));
@@ -26,6 +28,11 @@ const Register = lazy(() => import('pages/Register/Register'));
 
 export const App = () => {
   const { theme: themeColor } = useContext(ThemeContext);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(refreshUser());
+  }, [dispatch]);
 
   return (
     <ThemeProvider theme={theme[themeColor]}>
