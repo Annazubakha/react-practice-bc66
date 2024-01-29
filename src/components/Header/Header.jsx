@@ -10,9 +10,12 @@ import {
   StyledNavLink,
 } from './Header.styled';
 import { DiAndroid } from 'react-icons/di';
+import { useDispatch } from 'react-redux';
+import { userLogout } from 'myRedux/auth/operations';
 
 export const Header = () => {
   const [selectedItem, setSelectedItem] = useState(0);
+  const dispatch = useDispatch();
 
   return (
     <>
@@ -79,6 +82,7 @@ export const Header = () => {
             </Item>
           </List>
         </Nav>
+        <button onClick={() => dispatch(userLogout())}>Logout</button>
       </StyledHeader>
       <Suspense fallback={<Loader />}>
         <Outlet />
