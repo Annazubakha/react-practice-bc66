@@ -6,9 +6,9 @@ import { ThemeProvider } from './components/ThemeContext/ThemeContext.jsx';
 import 'modern-normalize/modern-normalize.css';
 import { GlobalStyle } from 'styles/CreateGlobalStyle';
 import { BrowserRouter } from 'react-router-dom';
-import { store } from './myRedux/store';
+import { persistor, store } from './myRedux/store';
 import { Provider } from 'react-redux';
-// import { PersistGate } from 'redux-persist/integration/react';
+import { PersistGate } from 'redux-persist/integration/react';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <>
@@ -16,9 +16,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <BrowserRouter basename="/react-practice-bc66">
       <Provider store={store}>
         <ThemeProvider>
-          {/* <PersistGate loading={null} persistor={persistor}> */}
-          <App />
-          {/* </PersistGate> */}
+          <PersistGate loading={null} persistor={persistor}>
+            <App />
+          </PersistGate>
         </ThemeProvider>
       </Provider>
     </BrowserRouter>
