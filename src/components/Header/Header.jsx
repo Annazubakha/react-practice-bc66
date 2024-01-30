@@ -1,6 +1,8 @@
 import { Loader } from 'components/Loader/Loader';
 import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+
 import {
   List,
   Nav,
@@ -9,11 +11,12 @@ import {
   Item,
   StyledNavLink,
   Indicator,
+  LogoutButton,
 } from './Header.styled';
 import { DiAndroid } from 'react-icons/di';
-import { useDispatch, useSelector } from 'react-redux';
+import { IoIosLogOut } from 'react-icons/io';
 import { userLogout } from 'myRedux/auth/operations';
-import { selectIsLoggedIn } from 'myRedux/auth/selectors';
+import { selectIsLoggedIn, selectUser } from 'myRedux/auth/selectors';
 import { UserMenu } from 'components/UserMenu/UserMenu';
 import { AuthNav } from 'components/AuthNav/AuthNav';
 
@@ -21,6 +24,7 @@ export const Header = () => {
   const dispatch = useDispatch();
 
   const isLoggedIn = useSelector(selectIsLoggedIn);
+  const user = useSelector(selectUser);
 
   return (
     <>
@@ -38,7 +42,12 @@ export const Header = () => {
           </List>
         </Nav>
         {isLoggedIn && (
-          <button onClick={() => dispatch(userLogout())}>Logout</button>
+          <div>
+            <p>Welcome, {user.name}</p>
+            <LogoutButton onClick={() => dispatch(userLogout())}>
+              Logout <IoIosLogOut />
+            </LogoutButton>
+          </div>
         )}
       </StyledHeader>
       <Suspense fallback={<Loader />}>
