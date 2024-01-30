@@ -5,6 +5,7 @@ export const StyledHeader = styled.header`
   display: flex;
   padding: 40px 0;
   background: ${({ theme }) => theme.colors.blue};
+  align-items: center;
 `;
 
 export const Nav = styled.nav`
@@ -123,4 +124,11 @@ export const StyledNavLink = styled(NavLink)`
     opacity: 1;
     transform: translateY(10px);
   }
+`;
+
+export const LogoutButton = styled.button`
+  background: ${({ theme }) => theme.colors.indicator};
+  border-radius: 5px;
+  padding: 5px;
+  margin-top: 3px;
 `;

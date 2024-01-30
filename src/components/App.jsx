@@ -5,10 +5,12 @@ import { ThemeContext } from './ThemeContext/ThemeContext';
 import { ThemeProvider } from 'styled-components';
 import { theme } from 'styles/theme';
 import { ScrollToTop, ToggleTheme } from 'components';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { refreshUser } from 'myRedux/auth/operations';
 import { PrivateRoute } from './PrivateRoute';
 import { PublicRoute } from './PublicRoute';
+import { selectIsRefreshing } from 'myRedux/auth/selectors';
+import { Loader } from './Loader/Loader';
 
 const Home = lazy(() => import('pages/Home/Home'));
 const Todo = lazy(() => import('pages/Todo/Todo'));
@@ -31,6 +33,7 @@ const Register = lazy(() => import('pages/Register/Register'));
 export const App = () => {
   const { theme: themeColor } = useContext(ThemeContext);
   const dispatch = useDispatch();
+  const isRefreshing = useSelector(selectIsRefreshing);
 
   useEffect(() => {
     dispatch(refreshUser());
@@ -38,67 +41,78 @@ export const App = () => {
 
   return (
     <ThemeProvider theme={theme[themeColor]}>
-      <Routes>
-        <Route path="/" element={<Header />}>
-          <Route index element={<Home />} />
-          <Route
-            path="todo"
-            element={<PrivateRoute component={<Todo />} redirectTo="/login" />}
-          />
-          <Route
-            path="login"
-            element={<PublicRoute component={<Login />} redirectTo="/todo" />}
-          />
-          <Route
-            path="register"
-            element={
-              <PublicRoute component={<Register />} redirectTo="/todo" />
-            }
-          />
-          <Route
-            path="image"
-            element={
-              <PrivateRoute component={<ImageGallery />} redirectTo="/login" />
-            }
-          />
-          <Route
-            path="points"
-            element={
-              <PrivateRoute component={<Points />} redirectTo="/login" />
-            }
-          />
-          <Route
-            path="props"
-            element={<PrivateRoute component={<Props />} redirectTo="/login" />}
-          />
-          <Route
-            path="cocktails"
-            element={
-              <PrivateRoute component={<Cocktails />} redirectTo="/login" />
-            }
-          />
-          <Route
-            path="searchcocktails"
-            element={
-              <PrivateRoute
-                component={<SearchCocktails />}
-                redirectTo="/login"
-              />
-            }
-          />
-          <Route path="searchcocktails/:id" element={<CocktailDetails />}>
+      {isRefreshing ? (
+        <Loader />
+      ) : (
+        <Routes>
+          <Route path="/" element={<Header />}>
+            <Route index element={<Home />} />
             <Route
-              path="ingredients"
+              path="todo"
+              element={
+                <PrivateRoute component={<Todo />} redirectTo="/login" />
+              }
+            />
+            <Route
+              path="login"
+              element={<PublicRoute component={<Login />} redirectTo="/todo" />}
+            />
+            <Route
+              path="register"
+              element={
+                <PublicRoute component={<Register />} redirectTo="/todo" />
+              }
+            />
+            <Route
+              path="image"
               element={
                 <PrivateRoute
-                  component={<CocktailIngredients />}
+                  component={<ImageGallery />}
                   redirectTo="/login"
                 />
               }
             />
+            <Route
+              path="points"
+              element={
+                <PrivateRoute component={<Points />} redirectTo="/login" />
+              }
+            />
+            <Route
+              path="props"
+              element={
+                <PrivateRoute component={<Props />} redirectTo="/login" />
+              }
+            />
+            <Route
+              path="cocktails"
+              element={
+                <PrivateRoute component={<Cocktails />} redirectTo="/login" />
+              }
+            />
+            <Route
+              path="searchcocktails"
+              element={
+                <PrivateRoute
+                  component={<SearchCocktails />}
+                  redirectTo="/login"
+                />
+              }
+            />
+            <Route path="searchcocktails/:id" element={<CocktailDetails />}>
+              <Route
+                path="ingredients"
+                element={
+                  <PrivateRoute
+                    component={<CocktailIngredients />}
+                    redirectTo="/login"
+                  />
+                }
+              />
+            </Route>
           </Route>
-        </Route>
-      </Routes>
+        </Routes>
+      )}
       <ToggleTheme />
       <ScrollToTop />
     </ThemeProvider>
